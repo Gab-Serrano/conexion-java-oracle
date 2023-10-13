@@ -1,0 +1,45 @@
+package com.oracledbtest;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
+
+public class ConexionBD {
+    
+    public static Connection obtenerConexion() throws Exception {
+        // Configuración del wallet
+        String rutaWallet = "D:\\Usuarios\\Gabriel Serrano\\OneDrive\\Escritorio\\test-oracle\\wallet";
+        String passwordWallet = "Iwtltpuyam123#";
+
+        System.setProperty("oracle.net.tns_admin", rutaWallet);
+        //System.setProperty("javax.net.ssl.trustStore", rutaWallet + "\\truststore.jks");
+        //System.setProperty("javax.net.ssl.trustStorePassword", passwordWallet);
+        //System.setProperty("javax.net.ssl.keyStore", rutaWallet + "\\keystore.jks");
+        //System.setProperty("javax.net.ssl.keyStorePassword", passwordWallet);
+
+        String jdbcUrl = "jdbc:oracle:thin:@testdb_high"; // Utilizando el alias 'testdb_high'
+
+        Properties properties = new Properties();
+        properties.put("user", "admin");
+        properties.put("password", passwordWallet);
+
+        try {
+            Connection connection = DriverManager.getConnection(jdbcUrl, properties);
+            return connection;
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+
+-----------------------------------------
+
+ /*
+        String rutaWallet = "D:\\Usuarios\\Gabriel Serrano\\OneDrive\\Escritorio\\test-oracle\\wallet";
+        String passwordWallet = "Iwtltpuyam123#";
+        System.setProperty("oracle.net.tns_admin", rutaWallet);
+        String jdbcUrl = "jdbc:oracle:thin:@testdb_high"; // Utilizando el alias 'testdb_high'
+        Properties properties = new Properties();
+        properties.put("user", "admin");
+        properties.put("password", passwordWallet);
+         */

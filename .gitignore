@@ -1,0 +1,3 @@
+# Ignorar los archivos compilados de Java
+*.class
+\src\com\oracledbtest\ConexionBD.java

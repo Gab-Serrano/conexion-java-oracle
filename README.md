@@ -25,7 +25,20 @@ Este es un proyecto educativo construido con Java 11, que simula un sistema de g
 3. Configura el path del wallet en la clase `ConexionBD`.
 4. Configura `URL`, `USER` y `PASSWORD` en la clase `ConexionBD`.
 ```java
-System.setProperty("oracle.net.tns_admin", "[PATH_TO_YOUR_WALLET]");
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
+ 
+public class ConexionBD {
+ 
+    public static Connection obtenerConexion() throws Exception {
+        String jdbcUrl = "jdbc:oracle:thin:[host]:[port]/[server_name]"; //datos obtenidos de tnsnames.ora db-name_high
+        Properties properties = new Properties();
+        properties.put("user", "[nombre_user_db]");
+        properties.put("password", "[contraseña_user_db]");
+        return DriverManager.getConnection(jdbcUrl, properties);
+    }
+}
 ```
 ### 📚 Configuración de ojdbc11
 Asegúrate que `ojdbc11.jar` está en tu classpath o en el directorio `lib` de tu proyecto.

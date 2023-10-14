@@ -1,3 +1,7 @@
-# Ignorar los archivos compilados de Java
-*.class
+build
+test
+nbproject
+wallet
+build.xml
+wallet.zip
 src\com\oracledbtest\ConexionBD.java

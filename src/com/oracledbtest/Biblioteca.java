@@ -14,7 +14,7 @@ public class Biblioteca {
 
     public static void mostrarLibros() throws Exception {
         String sql = "SELECT * FROM LIBRO";
-        try (Connection connection = Conexion.obtenerConexion();
+        try (Connection connection = ConexionBD.obtenerConexion();
              PreparedStatement statement = connection.prepareStatement(sql);
              ResultSet resultSet = statement.executeQuery()) {
 

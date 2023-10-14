@@ -43,7 +43,7 @@ public class Biblioteca {
         System.out.print("¿Está disponible? (Y/N): ");
         String disponible = scanner.nextLine();
 
-        try (Connection connection = ConexionBD.obtenerConexion()) {
+        try (Connection connection = Conexion.obtenerConexion()) {
             String sql = "INSERT INTO LIBRO (ID, TITULO, AUTOR, FECHA_PUBLICACION, DISPONIBLE) VALUES (LIBRO_SEQ.NEXTVAL, ?, ?, TO_DATE(?, 'YYYY-MM-DD'), ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, titulo);
@@ -73,7 +73,7 @@ public class Biblioteca {
         System.out.print("¿Está disponible? (Y/N o dejar en blanco para no cambiar): ");
         String disponible = scanner.nextLine();
 
-        try (Connection connection = ConexionBD.obtenerConexion()) {
+        try (Connection connection = Conexion.obtenerConexion()) {
             String sql = "UPDATE LIBRO SET TITULO = COALESCE(?, TITULO), AUTOR = COALESCE(?, AUTOR), FECHA_PUBLICACION = COALESCE(TO_DATE(?, 'YYYY-MM-DD'), FECHA_PUBLICACION), DISPONIBLE = COALESCE(?, DISPONIBLE) WHERE ID = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, titulo.isEmpty() ? null : titulo);
@@ -96,7 +96,7 @@ public class Biblioteca {
         int id = scanner.nextInt();
         scanner.nextLine();  // Consume newline left-over
 
-        try (Connection connection = ConexionBD.obtenerConexion()) {
+        try (Connection connection = Conexion.obtenerConexion()) {
             String sql = "DELETE FROM LIBRO WHERE ID = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, id);

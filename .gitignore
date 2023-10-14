@@ -4,4 +4,6 @@ nbproject
 wallet
 build.xml
 wallet.zip
+manifest.mf
+save.txt
 src\com\oracledbtest\ConexionBD.java

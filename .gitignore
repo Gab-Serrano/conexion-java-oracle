@@ -1,3 +1,8 @@
-# Ignorar los archivos compilados de Java
 *.class
 src\com\oracledbtest\ConexionBD.java
+build\
+test\
+wallet\
+wallet.zip
+save.txt
+```

@@ -2,23 +2,30 @@ package com.oracledbtest;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.nio.file.Paths;
+import java.util.Properties;
 
-public class Conexion {
+public class Conexion{
 
-    private static final String URL = "jdbc:oracle:thin:@yourDB_high";
-    private static final String PASSWORD = "YOUR_DATABASE_PASSWORD";
-    private static final String USER = "YOUR_DATABASE_USERNAME";
+    private static final String WALLET_PATH = "RUTA DE DONDE ESTÁ LA WALLET. NO DEBE SER UN ZIP";
+    private static final String WALLET_PASSWORD = "CONTRASEÑA";
+    private static final String JDBC_URL = "jdbc:oracle:thin:@testdb_high - REEMPLAZA 'testdb_high' EN EL ARCHIVO TNSNAMES.ORA APARECE AL INICIO [NOMBRE DE LA DB]_HIGH";
 
     public static Connection obtenerConexion() throws Exception {
-        
-        System.setProperty("oracle.net.tns_admin", "YOUR_WALLET_PATH");
-        
-        try {
-            Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            return connection;
-        } catch (SQLException e) {
-            throw e;
-        }
+        // Configuración del wallet
+        String trustStorePath = Paths.get(WALLET_PATH, "truststore.jks").toString();
+        String keyStorePath = Paths.get(WALLET_PATH, "keystore.jks").toString();
+
+        System.setProperty("oracle.net.tns_admin", WALLET_PATH);
+        System.setProperty("javax.net.ssl.trustStore", trustStorePath);
+        System.setProperty("javax.net.ssl.trustStorePassword", WALLET_PASSWORD);
+        System.setProperty("javax.net.ssl.keyStore", keyStorePath);
+        System.setProperty("javax.net.ssl.keyStorePassword", WALLET_PASSWORD);
+
+        Properties properties = new Properties();
+        properties.put("user", "admin");
+        properties.put("password", WALLET_PASSWORD);
+
+        return DriverManager.getConnection(JDBC_URL, properties);
     }
 }

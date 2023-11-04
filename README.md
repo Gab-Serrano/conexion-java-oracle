@@ -60,7 +60,7 @@ public class Conexion{
 }
 ```
 ### 📚 Configuración de ojdbc11
-Asegúrate que `ojdbc11.jar` está en tu classpath o en el directorio `lib` de tu proyecto.
+Asegúrate que `ojdbc11.jar` y `oraclepki.ja` está en tu classpath o en el directorio `lib` de tu proyecto.
 
 ## 💻 Características del Sistema
 

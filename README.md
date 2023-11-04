@@ -17,6 +17,7 @@ Este es un proyecto educativo construido con Java 11, que simula un sistema de g
 2. **Oracle Cloud Wallet**: Necesario para la configuración de JDBC.
 3. **ojdbc11**: Biblioteca requerida para la conexión con Oracle Database.
 4. **oraclepki.jar**: Biblioteca requerida para corregir error de fata de ´key store´.
+5. Estos drivers los puedes obtener de [JDBC and UCP Download page](https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html)
 
 ## ▶️ Configuración y Ejecución
 

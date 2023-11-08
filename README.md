@@ -36,7 +36,7 @@ import java.util.Properties;
 
 public class Conexion{
 
-    private static final String WALLET_PATH = "RUTA DE DONDE ESTÁ LA WALLET. NO DEBE SER UN ZIP";
+    private static final String WALLET_PATH = "RUTA DE DONDE ESTÁ LA WALLET DESCOMPRIMIDA. NO DEBE SER UN ZIP. POR EJEMPLO C:\User\TuUser\Escritorio\WalletDescomprimida";
     private static final String WALLET_PASSWORD = "CONTRASEÑA";
     private static final String JDBC_URL = "jdbc:oracle:thin:@testdb_high - REEMPLAZA 'testdb_high' EN EL ARCHIVO TNSNAMES.ORA APARECE AL INICIO [NOMBRE DE LA DB]_HIGH";
 
